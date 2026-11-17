@@ -10,7 +10,9 @@ import com.company.smarthelpdesk.domain.valueobject.FullName;
 import com.company.smarthelpdesk.domain.valueobject.UserId;
 import java.util.Objects;
 import java.util.UUID;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateUserService implements CreateUserUseCase {
     private final UserRepositoryPort userRepository;
     public CreateUserService(UserRepositoryPort userRepository) {

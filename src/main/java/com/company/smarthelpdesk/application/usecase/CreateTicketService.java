@@ -1,24 +1,19 @@
 package com.company.smarthelpdesk.application.usecase;
 
 import com.company.smarthelpdesk.application.command.ticket.CreateTicketCommand;
-
 import com.company.smarthelpdesk.application.command.ticket.CreateTicketResult;
-
 import com.company.smarthelpdesk.domain.port.out.TicketRepositoryPort;
-
 import com.company.smarthelpdesk.domain.port.out.UserRepositoryPort;
-
 import com.company.smarthelpdesk.domain.port.out.CategoryRepositoryPort;
-
 import java.util.Objects;
-
 import com.company.smarthelpdesk.domain.model.ticket.Ticket;
 import com.company.smarthelpdesk.domain.valueobject.TicketId;
 import com.company.smarthelpdesk.domain.valueobject.UserId;
 import com.company.smarthelpdesk.domain.valueobject.CategoryId;
 import com.company.smarthelpdesk.application.exception.ResourceNotFoundException;
 import java.util.UUID;
-
+import org.springframework.stereotype.Service;
+@Service
 public class CreateTicketService implements CreateTicketUseCase {
 
     private final TicketRepositoryPort ticketRepository;
