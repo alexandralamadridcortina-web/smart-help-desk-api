@@ -917,6 +917,7 @@ Las pruebas finalizaron con:
 
     BUILD SUCCESSFUL
 
+## Resultado del Día 7
 Día 7 - Persistencia con Spring Data JPA y H2
 Objetivo
 
@@ -1016,6 +1017,5 @@ Persistencia de tickets comprobada en H2.
 Arquitectura hexagonal conservada.
 
 0 pruebas fallidas en la ejecución completa de Gradle.
-
 
  ```
