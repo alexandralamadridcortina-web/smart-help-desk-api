@@ -917,150 +917,105 @@ Las pruebas finalizaron con:
 
     BUILD SUCCESSFUL
 
-## Próxima etapa — Día 7
-
-Implementar persistencia real con Spring Data JPA,
-
-manteniendo la separación entre dominio,
-
-aplicación e infraestructura.
-
-El objetivo será conservar los datos al reiniciar
-
-Spring Boot y conectar los adaptadores de
-
-persistencia con una base de datos.
-
-Día 7 — Persistencia de datos con Spring Data JPA y H2
+Día 7 - Persistencia con Spring Data JPA y H2
 Objetivo
-Implementar persistencia de datos en Smart Help Desk utilizando Spring Data JPA, Hibernate y H2, manteniendo la arquitectura hexagonal y la separación de responsabilidades entre dominio, aplicación e infraestructura.
-Tecnologías utilizadas
-Java 21
 
-Spring Boot 3.5.16
+Implementar la persistencia de usuarios, categorías y tickets utilizando Spring Data JPA y H2, manteniendo la arquitectura hexagonal del proyecto.
+Componentes desarrollados
 
-Spring Data JPA
+UserJpaEntity
 
-Hibernate
+SpringDataUserRepository
 
-H2 Database
+JpaUserRepositoryAdapter
 
-Gradle
+CategoryJpaEntity
 
-JUnit 5
+SpringDataCategoryRepository
 
-Postman
-Funcionalidades implementadas
-1. Persistencia de usuarios
+JpaCategoryRepositoryAdapter
 
-Implementación de UserJpaEntity.
+TicketJpaEntity
 
-Creación de SpringDataUserRepository.
+SpringDataTicketRepository
 
-Implementación de JpaUserRepositoryAdapter.
+JpaTicketRepositoryAdapter
 
-Almacenamiento de usuarios en H2.
+Ticket.restore()
 
-Persistencia de roles y estado activo.
+JpaUserRepositoryAdapterTest
 
-Validación de correos electrónicos duplicados.
-2. Persistencia de categorías
+JpaCategoryRepositoryAdapterTest
 
-Implementación de CategoryJpaEntity.
+JpaTicketRepositoryAdapterTest
+Funcionalidades
 
-Creación de SpringDataCategoryRepository.
+Guardar y consultar usuarios en la base de datos H2.
 
-Implementación de JpaCategoryRepositoryAdapter.
+Conservar los roles y el estado activo de los usuarios.
 
-Almacenamiento y consulta de categorías en H2.
+Validar correos electrónicos duplicados.
 
-Validación de nombres duplicados sin distinguir mayúsculas y minúsculas.
+Guardar y consultar categorías.
 
-Inicialización automática de la categoría Hardware sin generar registros duplicados.
-3. Persistencia de tickets
+Evitar la creación de categorías duplicadas.
 
-Implementación de TicketJpaEntity.
+Inicializar automáticamente la categoría Hardware.
 
-Creación de SpringDataTicketRepository.
+Guardar y recuperar tickets mediante Spring Data JPA.
 
-Implementación de JpaTicketRepositoryAdapter.
+Buscar tickets por identificador UUID.
 
-Almacenamiento de tickets en H2.
+Conservar la prioridad y el estado de los tickets.
 
-Conversión entre entidades JPA y modelos del dominio.
+Recuperar tickets cerrados sin modificar su estado.
 
-Implementación de Ticket.restore() para reconstruir tickets conservando su estado, prioridad y fechas originales.
-Arquitectura hexagonal
-Se mantuvo la separación entre las capas:
-Dominio: entidades, objetos de valor, reglas de negocio e interfaces de repositorio.
-Aplicación: casos de uso que implementan la lógica de la aplicación.
-Infraestructura: adaptadores JPA, entidades de persistencia y configuración de Spring Boot.
+Mantener las fechas originales de creación y actualización.
 
-Los casos de uso continúan dependiendo de los puertos del dominio, sin conocer directamente la implementación de la base de datos.
+Conservar los registros después de reiniciar Spring Boot.
 Pruebas realizadas
-Pruebas unitarias y de integración ejecutadas con Gradle.
 
-Prueba de persistencia de usuarios y sus roles.
+Pruebas de persistencia de usuarios en H2.
 
-Prueba de persistencia de categorías.
+Pruebas de persistencia de categorías.
 
-Validación de que la categoría Hardware no se duplica después de reiniciar.
+Pruebas de persistencia de tickets.
 
-Pruebas de guardado y recuperación de tickets con JPA.
+Validación de roles y estado activo.
 
-Validación de conservación de estados OPEN y CLOSED.
+Validación de categorías duplicadas.
 
-Validación de conservación de fechas originales.
+Verificación de tickets abiertos y cerrados.
 
-Creación de tickets desde Postman mediante POST /api/tickets.
+Verificación de fechas originales.
 
-Consulta de tickets mediante GET /api/tickets/{id}.
+Prueba de creación de tickets desde Postman.
 
-Verificación de registros utilizando consultas SQL en H2.
+Consulta de tickets mediante GET.
 
-Confirmación de persistencia de tickets después de reiniciar Spring Boot.
-Resultados
-Los tres repositorios principales utilizan persistencia con H2.
+Consultas SQL para verificar los datos almacenados.
 
-Los usuarios, categorías y tickets se almacenan correctamente.
+Reinicio de Spring Boot para comprobar la persistencia.
+Resultado del Día 7
 
-Se evita la creación duplicada de la categoría Hardware.
+Se implementó correctamente la persistencia de usuarios, categorías y tickets mediante Spring Data JPA y H2.
 
-Los tickets pueden recuperarse después de reiniciar la aplicación.
+Los datos permanecen almacenados después de reiniciar la aplicación y se mantiene la separación entre dominio, aplicación e infraestructura.
+Resultados obtenidos:
 
-Las pruebas de integración finalizaron correctamente.
+BUILD SUCCESSFUL.
 
-Los endpoints REST respondieron con los códigos HTTP esperados.
-Comandos utilizados
-Ejecutar todas las pruebas:
+Pruebas de integración satisfactorias.
 
-./gradlew.bat clean test
+POST /api/tickets: 201 Created.
 
-Compilar el proyecto:
+GET /api/tickets/{id}: 200 OK.
 
-./gradlew.bat compileJava
+Persistencia de tickets comprobada en H2.
 
-Iniciar Spring Boot:
+Arquitectura hexagonal conservada.
 
-./gradlew.bat bootRun
-Aprendizajes
-Durante este día se reforzaron los siguientes conceptos:
-
-Persistencia de datos con Spring Data JPA.
-
-Mapeo entre entidades de dominio y entidades JPA.
-
-Inyección de dependencias.
-
-Inversión de dependencias (DIP).
-
-Repositorios y adaptadores en arquitectura hexagonal.
-
-Pruebas de integración con JUnit.
-
-Consultas SQL para verificar la persistencia.
-
-Manejo de conexiones y bloqueos en bases de datos H2.
+0 pruebas fallidas en la ejecución completa de Gradle.
 
 
  ```
