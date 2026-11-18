@@ -158,5 +158,4 @@ class TicketControllerTest {
                 .andExpect(jsonPath("$.status").value("OPEN"));
         verify(createTicketUseCase, times(1)).execute(any());
     }
-
 }

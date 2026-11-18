@@ -931,4 +931,136 @@ Spring Boot y conectar los adaptadores de
 
 persistencia con una base de datos.
 
+Día 7 — Persistencia de datos con Spring Data JPA y H2
+Objetivo
+Implementar persistencia de datos en Smart Help Desk utilizando Spring Data JPA, Hibernate y H2, manteniendo la arquitectura hexagonal y la separación de responsabilidades entre dominio, aplicación e infraestructura.
+Tecnologías utilizadas
+Java 21
+
+Spring Boot 3.5.16
+
+Spring Data JPA
+
+Hibernate
+
+H2 Database
+
+Gradle
+
+JUnit 5
+
+Postman
+Funcionalidades implementadas
+1. Persistencia de usuarios
+
+Implementación de UserJpaEntity.
+
+Creación de SpringDataUserRepository.
+
+Implementación de JpaUserRepositoryAdapter.
+
+Almacenamiento de usuarios en H2.
+
+Persistencia de roles y estado activo.
+
+Validación de correos electrónicos duplicados.
+2. Persistencia de categorías
+
+Implementación de CategoryJpaEntity.
+
+Creación de SpringDataCategoryRepository.
+
+Implementación de JpaCategoryRepositoryAdapter.
+
+Almacenamiento y consulta de categorías en H2.
+
+Validación de nombres duplicados sin distinguir mayúsculas y minúsculas.
+
+Inicialización automática de la categoría Hardware sin generar registros duplicados.
+3. Persistencia de tickets
+
+Implementación de TicketJpaEntity.
+
+Creación de SpringDataTicketRepository.
+
+Implementación de JpaTicketRepositoryAdapter.
+
+Almacenamiento de tickets en H2.
+
+Conversión entre entidades JPA y modelos del dominio.
+
+Implementación de Ticket.restore() para reconstruir tickets conservando su estado, prioridad y fechas originales.
+Arquitectura hexagonal
+Se mantuvo la separación entre las capas:
+Dominio: entidades, objetos de valor, reglas de negocio e interfaces de repositorio.
+Aplicación: casos de uso que implementan la lógica de la aplicación.
+Infraestructura: adaptadores JPA, entidades de persistencia y configuración de Spring Boot.
+
+Los casos de uso continúan dependiendo de los puertos del dominio, sin conocer directamente la implementación de la base de datos.
+Pruebas realizadas
+Pruebas unitarias y de integración ejecutadas con Gradle.
+
+Prueba de persistencia de usuarios y sus roles.
+
+Prueba de persistencia de categorías.
+
+Validación de que la categoría Hardware no se duplica después de reiniciar.
+
+Pruebas de guardado y recuperación de tickets con JPA.
+
+Validación de conservación de estados OPEN y CLOSED.
+
+Validación de conservación de fechas originales.
+
+Creación de tickets desde Postman mediante POST /api/tickets.
+
+Consulta de tickets mediante GET /api/tickets/{id}.
+
+Verificación de registros utilizando consultas SQL en H2.
+
+Confirmación de persistencia de tickets después de reiniciar Spring Boot.
+Resultados
+Los tres repositorios principales utilizan persistencia con H2.
+
+Los usuarios, categorías y tickets se almacenan correctamente.
+
+Se evita la creación duplicada de la categoría Hardware.
+
+Los tickets pueden recuperarse después de reiniciar la aplicación.
+
+Las pruebas de integración finalizaron correctamente.
+
+Los endpoints REST respondieron con los códigos HTTP esperados.
+Comandos utilizados
+Ejecutar todas las pruebas:
+
+./gradlew.bat clean test
+
+Compilar el proyecto:
+
+./gradlew.bat compileJava
+
+Iniciar Spring Boot:
+
+./gradlew.bat bootRun
+Aprendizajes
+Durante este día se reforzaron los siguientes conceptos:
+
+Persistencia de datos con Spring Data JPA.
+
+Mapeo entre entidades de dominio y entidades JPA.
+
+Inyección de dependencias.
+
+Inversión de dependencias (DIP).
+
+Repositorios y adaptadores en arquitectura hexagonal.
+
+Pruebas de integración con JUnit.
+
+Consultas SQL para verificar la persistencia.
+
+Manejo de conexiones y bloqueos en bases de datos H2.
+
+
  ```

@@ -12,22 +12,25 @@ public class CategoryDataInitializer {
 
     @Bean
     public CommandLineRunner initializeCategories(
-
             CategoryRepositoryPort categoryRepository
 
     ) {
 
         return args -> {
-            Category hardware = new Category(
-                    new CategoryId(UUID.randomUUID()),
-                    "Hardware"
-            );
-
-            categoryRepository.save(hardware);
-            System.out.println(
-                    "Hardware category ID: "
-                            + hardware.getId().value()
-            );
+            if (!categoryRepository.existsByNameIgnoreCase("Hardware")) {
+                Category hardware = new Category(
+                        new CategoryId(UUID.randomUUID()),
+                        "Hardware"
+                );
+                categoryRepository.save(hardware);
+                System.out.println(
+                        "Hardware category ID: " + hardware.getId().value()
+                );
+            } else {
+                System.out.println(
+                        "Hardware category already exists"
+                );
+            }
         };
     }
 }
