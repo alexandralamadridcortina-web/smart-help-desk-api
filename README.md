@@ -1018,4 +1018,92 @@ Arquitectura hexagonal conservada.
 
 0 pruebas fallidas en la ejecución completa de Gradle.
 
+Día 8 - Gestión del ciclo de vida de los tickets
+Objetivo
+Implementar las operaciones de cierre y cambio de prioridad de tickets mediante casos de uso, servicios de aplicación y endpoints REST, respetando las reglas de negocio y manteniendo la arquitectura hexagonal.
+Componentes desarrollados
+CloseTicketUseCase
+
+CloseTicketService
+
+CloseTicketServiceTest
+
+ChangeTicketPriorityUseCase
+
+ChangeTicketPriorityService
+
+ChangeTicketPriorityServiceTest
+
+Actualización de TicketController
+
+Actualización de TicketControllerTest
+
+ChangePriorityRequest
+Funcionalidades
+Cerrar tickets mediante un endpoint REST.
+
+Cambiar el estado de un ticket de OPEN a CLOSED.
+
+Impedir que un ticket cerrado sea modificado.
+
+Cambiar la prioridad de los tickets abiertos.
+
+Actualizar la fecha de modificación de los tickets.
+
+Validar la existencia de tickets antes de modificarlos.
+
+Guardar los cambios mediante Spring Data JPA.
+
+Conservar los cambios en H2 después de reiniciar Spring Boot.
+
+Mantener las reglas de negocio dentro del dominio.
+
+Aplicar inyección de dependencias y el principio DIP de SOLID.
+Pruebas realizadas
+Pruebas unitarias del servicio de cierre de tickets.
+
+Pruebas unitarias del servicio de cambio de prioridad.
+
+Validación de tickets inexistentes.
+
+Validación de restricciones sobre tickets cerrados.
+
+Prueba PATCH /api/tickets/{id}/close.
+
+Prueba PATCH /api/tickets/{id}/priority.
+
+Consulta GET para verificar el estado CLOSED.
+
+Consulta GET para verificar el cambio de prioridad a HIGH.
+
+Reinicio de Spring Boot para comprobar la persistencia.
+
+Ejecución completa de pruebas mediante Gradle.
+
+Comando utilizado:
+
+.\gradlew.bat clean test
+Resultado del Día 8
+Se implementó correctamente la gestión del ciclo de vida de los tickets, permitiendo cerrarlos y modificar su prioridad mediante endpoints REST.
+
+Se comprobó que las reglas de negocio impiden modificar tickets cerrados y que los cambios permanecen almacenados después de reiniciar la aplicación.
+Resultados obtenidos:
+
+BUILD SUCCESSFUL.
+
+0 pruebas fallidas.
+
+PATCH para cerrar tickets: 204 No Content.
+
+PATCH para modificar prioridades: cambio confirmado mediante GET.
+
+GET para consultar tickets: 200 OK.
+
+Restricción de modificación de tickets cerrados: 400 Bad Request.
+
+Persistencia de cambios comprobada en H2.
+
+Arquitectura hexagonal conservada.
+Día 8 completado exitosamente.
+
  ```

@@ -1,5 +1,6 @@
 package com.company.smarthelpdesk.infrastructure.entrypoints;
 import com.company.smarthelpdesk.application.exception.ResourceNotFoundException;
+import com.company.smarthelpdesk.application.usecase.ChangeTicketPriorityUseCase;
 import com.company.smarthelpdesk.application.usecase.CreateTicketUseCase;
 import com.company.smarthelpdesk.application.usecase.GetTicketByIdUseCase;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,9 @@ import com.company.smarthelpdesk.application.command.ticket.CreateTicketResult;
 import com.company.smarthelpdesk.domain.model.ticket.TicketStatus;
 import org.springframework.http.MediaType;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import com.company.smarthelpdesk.application.usecase.CloseTicketUseCase;
+import static org.mockito.Mockito.mock;
+
 class TicketControllerTest {
     @Test
     void shouldReturn404WhenTicketDoesNotExist() throws Exception {
@@ -31,9 +35,17 @@ class TicketControllerTest {
                         "Ticket not found"
                 ));
         TicketController controller = new TicketController(
+
                 createTicketUseCase,
-                getTicketByIdUseCase
+
+                getTicketByIdUseCase,
+
+                mock(CloseTicketUseCase.class),
+
+                mock(ChangeTicketPriorityUseCase.class)
+
         );
+
         MockMvc mockMvc = MockMvcBuilders
                 .standaloneSetup(controller)
                 .setControllerAdvice(new GlobalExceptionHandler())
@@ -84,9 +96,14 @@ class TicketControllerTest {
 
                 createTicketUseCase,
 
-                getTicketByIdUseCase
+                getTicketByIdUseCase,
+
+                mock(CloseTicketUseCase.class),
+
+                mock(ChangeTicketPriorityUseCase.class)
 
         );
+
 
         MockMvc mockMvc = MockMvcBuilders
 
@@ -131,9 +148,17 @@ class TicketControllerTest {
         when(createTicketUseCase.execute(any()))
                 .thenReturn(result);
         TicketController controller = new TicketController(
+
                 createTicketUseCase,
-                getTicketByIdUseCase
+
+                getTicketByIdUseCase,
+
+                mock(CloseTicketUseCase.class),
+
+                mock(ChangeTicketPriorityUseCase.class)
+
         );
+
         MockMvc mockMvc = MockMvcBuilders
                 .standaloneSetup(controller)
                 .build();
