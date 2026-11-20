@@ -6,8 +6,8 @@ import com.company.smarthelpdesk.domain.port.out.TicketRepositoryPort;
 import com.company.smarthelpdesk.domain.valueobject.TicketId;
 import java.util.Objects;
 import java.util.UUID;
-import org.springframework.stereotype.Service;
-@Service
+
+
 public class GetTicketByIdService implements GetTicketByIdUseCase {
     private final TicketRepositoryPort ticketRepository;
     public GetTicketByIdService(

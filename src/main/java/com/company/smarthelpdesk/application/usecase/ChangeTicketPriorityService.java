@@ -4,10 +4,9 @@ import com.company.smarthelpdesk.domain.model.ticket.Ticket;
 import com.company.smarthelpdesk.domain.model.ticket.TicketPriority;
 import com.company.smarthelpdesk.domain.port.out.TicketRepositoryPort;
 import com.company.smarthelpdesk.domain.valueobject.TicketId;
-import org.springframework.stereotype.Service;
 import java.util.Objects;
 import java.util.UUID;
-@Service
+
 public class ChangeTicketPriorityService
         implements ChangeTicketPriorityUseCase {
     private final TicketRepositoryPort ticketRepository;

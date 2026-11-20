@@ -12,8 +12,7 @@ import com.company.smarthelpdesk.domain.valueobject.UserId;
 import com.company.smarthelpdesk.domain.valueobject.CategoryId;
 import com.company.smarthelpdesk.application.exception.ResourceNotFoundException;
 import java.util.UUID;
-import org.springframework.stereotype.Service;
-@Service
+
 public class CreateTicketService implements CreateTicketUseCase {
 
     private final TicketRepositoryPort ticketRepository;
