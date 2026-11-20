@@ -1019,10 +1019,10 @@ Arquitectura hexagonal conservada.
 0 pruebas fallidas en la ejecución completa de Gradle.
 
 ## Resultado del Día 8
-Día 8 - Gestión del ciclo de vida de los tickets
-Objetivo
+# Día 8 - Gestión del ciclo de vida de los tickets
+## Objetivo
 Implementar las operaciones de cierre y cambio de prioridad de tickets mediante casos de uso, servicios de aplicación y endpoints REST, respetando las reglas de negocio y manteniendo la arquitectura hexagonal.
-Componentes desarrollados
+## Componentes desarrollados
 CloseTicketUseCase
 
 CloseTicketService
@@ -1040,7 +1040,7 @@ Actualización de TicketController
 Actualización de TicketControllerTest
 
 ChangePriorityRequest
-Funcionalidades
+## Funcionalidades
 Cerrar tickets mediante un endpoint REST.
 
 Cambiar el estado de un ticket de OPEN a CLOSED.
@@ -1060,7 +1060,7 @@ Conservar los cambios en H2 después de reiniciar Spring Boot.
 Mantener las reglas de negocio dentro del dominio.
 
 Aplicar inyección de dependencias y el principio DIP de SOLID.
-Pruebas realizadas
+## Pruebas realizadas
 Pruebas unitarias del servicio de cierre de tickets.
 
 Pruebas unitarias del servicio de cambio de prioridad.
@@ -1084,7 +1084,7 @@ Ejecución completa de pruebas mediante Gradle.
 Comando utilizado:
 
 .\gradlew.bat clean test
-Resultado del Día 8
+## Resultado del Día 8
 Se implementó correctamente la gestión del ciclo de vida de los tickets, permitiendo cerrarlos y modificar su prioridad mediante endpoints REST.
 
 Se comprobó que las reglas de negocio impiden modificar tickets cerrados y que los cambios permanecen almacenados después de reiniciar la aplicación.
