@@ -1018,7 +1018,7 @@ Arquitectura hexagonal conservada.
 
 0 pruebas fallidas en la ejecución completa de Gradle.
 
-## Resultado del Día 8
+
 # Día 8 - Gestión del ciclo de vida de los tickets
 ## Objetivo
 Implementar las operaciones de cierre y cambio de prioridad de tickets mediante casos de uso, servicios de aplicación y endpoints REST, respetando las reglas de negocio y manteniendo la arquitectura hexagonal.
